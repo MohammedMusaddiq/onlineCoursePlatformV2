@@ -25,9 +25,9 @@ POST: http://127.0.0.1:8080/api/online-course/courses/
             "content": str,
         }}
 
-GET: http://127.0.0.1:8080/api/online-course/courses/<pk>/
+GET: http://127.0.0.1:8080/api/online-course/courses/pk/
 
-PUT:  http://127.0.0.1:8080/api/online-course/courses/<pk>/
+PUT:  http://127.0.0.1:8080/api/online-course/courses/pk/
      body = { 
             "teacher":int,
             "title": str,
@@ -35,7 +35,7 @@ PUT:  http://127.0.0.1:8080/api/online-course/courses/<pk>/
             "content": str,
         }}
 
-DELETE:  http://127.0.0.1:8080/api/online-course/courses/<pk>/
+DELETE:  http://127.0.0.1:8080/api/online-course/courses/pk/
 
 ---------------------------------
 Course Registration Endpoints:
@@ -49,15 +49,15 @@ POST: http://127.0.0.1:8080/api/online-course/course-registeration/
             "course": int,
         }}
 
-POST: http://127.0.0.1:8080/api/online-course/course-registeration/<pk>/
+POST: http://127.0.0.1:8080/api/online-course/course-registeration/pk/
 
-PUT:  http://127.0.0.1:8080/api/online-course/course-registeration/<pk>/
+PUT:  http://127.0.0.1:8080/api/online-course/course-registeration/pk/
       body = { 
             "student":int,
             "course": int,
         }}
 
-DELETE: http://127.0.0.1:8080/api/online-course/course-registeration/<pk>/
+DELETE: http://127.0.0.1:8080/api/online-course/course-registeration/pk/
 
 
 ----------------------------------------------------------------
