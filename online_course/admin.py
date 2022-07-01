@@ -1,10 +1,16 @@
 from django.contrib import admin
-from .models import Course, CourseRegistration
+from .models import Content, Course, CourseRegistration
+
+
+class ContentInline(admin.StackedInline):
+    model = Content
+    extra = 0
 
 
 class CourseAdmin(admin.ModelAdmin):
+    inlines = [ContentInline]
     list_display = ['teacher', 'title',
-                    'description', 'created_on', 'updated_on']
+                    'created_on', 'updated_on']
 
 
 admin.site.register(Course, CourseAdmin)

@@ -25,8 +25,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'oauth2_provider',
+    "corsheaders",
     'rest_framework',
-    'rest_framework.authtoken',
     'custom_authentication.apps.CustomAuthenticationConfig',
     'online_course.apps.OnlineCourseConfig',
 ]
@@ -34,6 +35,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -42,6 +44,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = ('GET', 'POST', 'PUT', 'DELETE', 'OPTIONS')
+
 
 TEMPLATES = [
     {
@@ -116,11 +123,22 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'custom_authentication.User'
 
+
+OAUTH2_PROVIDER = {
+    'SCOPES': {'read': 'Read scope', 'write': 'Write scope', 'groups': 'Access to your groups'}
+}
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ]
+    ],
 }
+
+LOGIN_URL = '/admin/login/'
+
+
+CLIENT_ID = '8jOyrmTDnbhM33lajdCBbQS8JD7WxoMjYaBJSsrj'
+CLIENT_SECRET = 'vx5xLbQQ5SpXP2mNpOgCSnPSDIdRH03aF5F8LoJapRGvIVMQXvPgGqxMxwpMlWZrOsTW4sQeCzgnahbGp0N2ynpihwATKhPk2rJQlj2TuvetgBpTmg5SYHmddf0AEzQP'
