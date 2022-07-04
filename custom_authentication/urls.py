@@ -5,6 +5,7 @@ app_name = 'user'
 
 urlpatterns = [
     path('login/', views.LoginApiView.as_view()),
-    path('register/teacher/', views.TeacherCreateAPIView.as_view()),
-    path('register/student/', views.StudentCreateAPIView.as_view()),
+    path('register/t/', views.TeacherCreateAPIView.as_view()),
+    path('register/s/', views.StudentCreateAPIView.as_view()),
+    path('verify-otp/', views.VerifyOtp.as_view()),
 ]

@@ -84,15 +84,15 @@ class AllCoursesListApiView(generics.ListAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
     filter_backends = [filters.SearchFilter]
-    search_fields = ['title', 'description']
+    search_fields = ['title', ]
 
 
 class ContentCreateApiView(mixins.CreateModelMixin, mixins.ListModelMixin, generics.GenericAPIView):
     serializer_class = ContentSerializer
 
     def get_queryset(self):
-        course = self.request.query_params.get('course')
-        return Content.objects.filter(course__teacher_id=self.request.user.id, course_id=course)
+        course_id = self.request.data.get('course_id')
+        return Content.objects.filter(course__teacher_id=self.request.user.id, course_id=course_id)
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)

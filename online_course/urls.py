@@ -15,6 +15,6 @@ urlpatterns = [
     path('course-registeration/<pk>/',
          views.CourseRegistrationRetrieveUpdateDestroyApiView.as_view()),
 
-    path('course/', views.AllCoursesListApiView.as_view()),
+    path('s/course/', views.AllCoursesListApiView.as_view()),
 
 ]
