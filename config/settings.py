@@ -17,6 +17,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "sslserver",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -137,3 +138,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_PASSWORD = "qgqyqsjvxxkikovg"
+
+PAYPAL_CLIENT_ID = 'AU4gqnXA5q_L-x8qVUuGjLYlvEM8QcHyV-4ZsCGE6ZYBihuXfjJi8DVM4Y9c8g6R52GMrajSqbgJE4BX'
+PAYPAL_CLIENT_SECRET = 'EDiVj-w60c4WYccqzFULHtH9HH_yj3rzXP6beFo2R-di_KupoOj5hv_gJ6ArXB3vbQbt0eqa6Wp4qNoV'

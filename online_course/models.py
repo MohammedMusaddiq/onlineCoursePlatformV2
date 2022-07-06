@@ -8,11 +8,12 @@ class Course(models.Model):
     teacher = models.ForeignKey(
         User, related_name='teacher', on_delete=models.CASCADE)
     title = models.CharField(max_length=100, blank=True, null=True)
+    price = models.CharField(max_length=100, blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name_plural = ('Courses')
+        verbose_name_plural = 'Courses'
         ordering = ('-created_on', '-updated_on')
 
     def __str__(self):
@@ -38,9 +39,11 @@ class CourseRegistration(models.Model):
     course = models.ForeignKey(
         Course, related_name='course', on_delete=models.CASCADE)
     registration_date = models.DateTimeField(auto_now=True)
+    paid = models.BooleanField(default=False)
+    paypal_payment_id = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        verbose_name_plural = ('Course Registrations')
+        verbose_name_plural = 'Course Registrations'
         ordering = ('-student',)
 
     def __str__(self):
